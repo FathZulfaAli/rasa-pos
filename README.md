@@ -6,7 +6,7 @@ RASA POS System is a modern, lightweight, and offline-capable point-of-sale (POS
 
 - **Offline Capability**: Uses SQLite3 for database management.
 - **Modern UI**: Built with Next.js for a fast and intuitive interface.
-- **Storage Management**: Efficiently manage and track inventory levels.
+- **Inventory Management**: Efficiently manage and track inventory levels.
 - **Sales Tracking**: Monitor and analyze sales data.
 
 ## Usage
