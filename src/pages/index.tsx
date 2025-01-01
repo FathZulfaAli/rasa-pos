@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
+import { useState } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,6 +14,14 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+  const [test, setTest] = useState("");
+
+  const handleAPI = async () => {
+    const res = await fetch("/api/hello");
+    const data = await res.json();
+    setTest(data.name);
+  };
+
   return (
     <div
       className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
@@ -27,7 +37,7 @@ export default function Home() {
         />
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2">
-            Get started by editing{" "}
+            Get started by noooo{" "}
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
               src/pages/index.tsx
             </code>
@@ -50,7 +60,7 @@ export default function Home() {
               width={20}
               height={20}
             />
-            Deploy now
+            {test || "Deploy"}
           </a>
           <a
             className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
@@ -93,10 +103,9 @@ export default function Home() {
           />
           Examples
         </a>
-        <a
+        <button
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
+          onClick={handleAPI}
           rel="noopener noreferrer"
         >
           <Image
@@ -107,7 +116,7 @@ export default function Home() {
             height={16}
           />
           Go to nextjs.org →
-        </a>
+        </button>
       </footer>
     </div>
   );
